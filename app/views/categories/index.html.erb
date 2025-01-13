@@ -1,4 +1,4 @@
-<div class = "container mt-5">
+<div id="index_list" class = "container mt-5">
 <ul>
   <% @categories.each do |category| %>
     <li><%= link_to category.name, category_path(category) %></li>

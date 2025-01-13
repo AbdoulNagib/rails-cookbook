@@ -13,12 +13,22 @@
 
 li{
   list-style: none;
+
 }
+
+ul{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+
+
 a{
 text-decoration: none;
 }
 
 #new_button{
-  display: flex;
-  justify-content: end;
+  flex-direction: column;
+  align-items: baseline;
 }

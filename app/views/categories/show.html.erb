@@ -2,4 +2,18 @@
 <h1><%= @category.name %></h1>
 </div>
 
+<ul>
+<% @category.bookmarks.each do |bookmark|  %>
+  <li>
+    <%= bookmark.category.name %>
+    <p><em><%= bookmark.comment %></em></p>
+    | <%= link_to "Delete",
+  bookmark_path(bookmark),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>|
+  </li>
+<% end %>
+</ul>
+
 <li><%= link_to "Categories", categories_path %></li>
+<li><%= link_to "Create a bookmark", new_category_bookmark_path(@category)%></li>
