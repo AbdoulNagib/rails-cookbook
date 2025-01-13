@@ -10,3 +10,15 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+li{
+  list-style: none;
+}
+a{
+text-decoration: none;
+}
+
+#new_button{
+  display: flex;
+  justify-content: end;
+}
