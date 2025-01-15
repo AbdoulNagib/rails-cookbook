@@ -2,6 +2,7 @@
   <h1>New Category</h1>
   <%= simple_form_for @category do |f| %>
   <%=f.input :name, label: false, placeholder: "text..." %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit class: "btn btn-primary"  %>
   <% end %>
 </div>
