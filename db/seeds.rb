@@ -8,6 +8,22 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Category.destroy_all
+
+Category.create(name:"Western")
+
+Category.create(name:"Middle Eastern")
+
+Category.create(name:"Asian")
+
+Category.create(name:"African")
+
+Category.create(name:"Latin american")
+
+Category.create(name:"Caribbean")
+
+Recipe.destroy_all
+
 Recipe.create(name: "Chicken Stir-Fry (Asian)", description: "Dice chicken, marinate in soy sauce, garlic, and ginger. Stir-fry in sesame oil with broccoli, bell peppers, and onions. Add more soy sauce for flavour. Serve with steamed rice or noodles for a quick, balanced dish.", image_link: "https://images.pexels.com/photos/105588/pexels-photo-105588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", rating: 8.8)
 
 Recipe.create(name: "Spiced Lentil Soup (Middle Eastern)", description: "Sauté onions and garlic in olive oil. Add red lentils, cumin, turmeric, and vegetable stock. Simmer until creamy, then finish with lemon juice. Serve with crusty bread for a hearty and nutritious meal.", image_link: "https://images.pexels.com/photos/12077978/pexels-photo-12077978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", rating: 8.5 )

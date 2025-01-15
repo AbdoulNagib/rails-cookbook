@@ -1,0 +1,26 @@
+.banner{
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 5px;
+
+
+  .header{
+    align-items: center;
+    text-align: center;
+  }
+
+}
+
+
+h1, h3{
+  font-family: "Parkinsans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 300;
+}

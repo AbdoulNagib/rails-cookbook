@@ -11,6 +11,8 @@
 @import "components/index";
 @import "pages/index";
 
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Parkinsans:wght@300..800&family=Roboto:wght@100&family=Ubuntu:wght@300&display=swap');
+
 li{
   list-style: none;
 
@@ -22,13 +24,30 @@ ul{
 }
 
 
-
+.container{
+  margin-bottom: 30px;
+}
 
 a{
 text-decoration: none;
+color: black;
+font-weight: 600;
+transition: ease 0.3s;
 }
 
-#new_button{
-  flex-direction: column;
-  align-items: baseline;
+.footer{
+  display: flex;
+  margin-top: 50px;
+  justify-content: flex-end;
+}
+
+a:hover{
+  color: grey;
+}
+
+.main-container {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }

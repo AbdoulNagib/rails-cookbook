@@ -1,0 +1,8 @@
+
+<h1>New Reviews</h1>
+
+<%= simple_form_for [@category, @bookmark, @review] do|f| %>
+  <%= f.input :comment %>
+  <%= f.input :rating %>
+  <%= f.submit class: "btn-btn primary" %>
+<% end %>

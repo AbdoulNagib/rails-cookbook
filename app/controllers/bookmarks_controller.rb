@@ -4,6 +4,10 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new
   end
 
+  def show
+    @bookmark = Bookmark.find(params[:bookmark_id])
+  end
+
   def create
     @category = Category.find(params[:category_id])
     @bookmark = @category.bookmarks.create(bookmark_params)
@@ -25,4 +29,6 @@ class BookmarksController < ApplicationController
   def bookmark_params
     params.require(:bookmark).permit(:comment, :category_id, :recipe_id)
   end
+
+
 end

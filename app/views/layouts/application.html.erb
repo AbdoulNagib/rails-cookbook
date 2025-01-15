@@ -6,11 +6,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="main-container">
+      <%= render 'shared/navbar' %>
+      <div class = "container mt-5">
+        <%= yield %>
+      </div>
+      <div class="footer container">
+        <p>© Cookbook 2025</p>
+      </div>
+    </div>
   </body>
 </html>

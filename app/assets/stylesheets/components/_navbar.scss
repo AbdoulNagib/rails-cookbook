@@ -10,3 +10,14 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  img{
+    width: 160px;
+    height: 100px;
+    object-fit: cover;
+  }
+}

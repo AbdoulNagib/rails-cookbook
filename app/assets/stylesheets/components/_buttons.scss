@@ -1,0 +1,17 @@
+.btn-primary{
+  color: white !important;
+  padding: 8px 24px !important;
+  border-radius: 4px !important;
+  background: #000000 !important;
+  transition: background 0.3s ease !important;
+  opacity:0.85 !important;
+  transition: opacity 0.3s ease !important;
+  border: none;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.btn-primary:hover {
+  background: #000000 !important;
+  color: white !important;
+  opacity: 1 !important;
+}

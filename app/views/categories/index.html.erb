@@ -1,11 +1,24 @@
-<div id="index_list" class = "container mt-5">
-<ul>
-  <% @categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category) %></li>
-  <% end %>
-</ul>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/1660030/pexels-photo-1660030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);">
+  <div class= "header">
+    <h1>Discover</h1>
+    <h3>your favourite recipes</h3>
+  </div>
 </div>
 
-<div id="New_button"class="container mt-5">
-<%= link_to "New (category)", new_category_path %>
+<div class="info-top">
+  <h3>List of Categories</h3>
+  <%= link_to 'New Category', new_category_path, class: "btn btn-primary" %>
+</div>
+
+<div class="cards">
+  <% @categories.each do |category| %>
+
+    <%= link_to  category_path(category) do%>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg);">
+        <h2><%= category.name %></h2>
+      </div>
+    <% end %>
+
+  <% end %>
 </div>

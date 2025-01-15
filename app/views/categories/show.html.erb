@@ -1,19 +1,44 @@
-<div class= "container mt-5">
-<h1><%= @category.name %></h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg);">
+  <div>
+    <h1><%= @category.name %></h1>
+  </div>
 </div>
 
-<ul>
-<% @category.bookmarks.each do |bookmark|  %>
-  <li>
-    <%= bookmark.category.name %>
-    <p><em><%= bookmark.comment %></em></p>
-    | <%= link_to "Delete",
-  bookmark_path(bookmark),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>|
-  </li>
-<% end %>
-</ul>
+<div class = "cards">
+  <% @category.bookmarks.each do |bookmark|  %>
+    <div class= "card-recipe">
 
-<li><%= link_to "Categories", categories_path %></li>
-<li><%= link_to "Create a bookmark", new_category_bookmark_path(@category)%></li>
+
+    <%= link_to bookmark_path(bookmark),
+      data: { turbo_method: :delete,
+              turbo_confirm: "Are you sure?"}, class: 'btn-delete' do %>
+
+              <i class="fa-solid fa-trash"></i>
+
+              <% end %>
+      <img src="<%= bookmark.recipe.image_link %>" alt="recipe image">
+
+          <div class="card-description">
+            <%= link_to bookmark.recipe.name, category_bookmark_path(category_id: @category, bookmark_id: bookmark ) %>
+            <p><%= bookmark.recipe.description.truncate(180) %></p>
+          </div>
+
+          <div class="card-recipe-info">
+
+            <div class="comment">
+              <i class="fa-solid fa-quote-left me-2"></i><p><em><%= bookmark.comment %></em></p>
+            </div>
+
+            <div>
+              <p><%= bookmark.recipe.rating %></p>
+            </div>
+          </div>
+
+    </div>
+
+  <% end %>
+</div>
+
+<div class="links">
+  <%= link_to "Create a bookmark", new_category_bookmark_path(@category)%>
+</div>

@@ -1,0 +1,9 @@
+<h1>Show Bookmark</h1>
+
+<% @bookmark.reviews.each do |review|  %>
+   <strong><%= review.comment %></strong>
+   <p><%= review.rating %></p>
+<% end %>
+
+<li><%= link_to "Categories", categories_path %></li>|
+<li><%= link_to "Bookmarks",  category_bookmark_path %></li>

@@ -1,0 +1,83 @@
+.card-category{
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 1px 1px 3px rgba(87, 87, 87, 0.2);
+  border-radius: 5px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.card-category > h2{
+  font-family: "Parkinsans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: white;
+  opacity: 0.85;
+  font-size: 24px;
+  font-weight: 600;
+  transition: ease 0.3s;
+}
+
+.cards {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-category:hover{
+  transform: scale(1.05);
+}
+
+.card-recipe{
+  overflow: hidden;
+  background: white;
+  border-radius: 5px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  position: relative;
+  margin-bottom: 40px;
+  img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-description{
+  padding: 16px;
+  height: 200px;
+}
+
+.card-recipe-info{
+  display: flex;
+  justify-content: space-between;
+  padding: 26px 16px 16px 16px;
+}
+
+.btn-delete{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  opacity: 0.5;
+}
+
+i{
+  transition: ease 0.3s;
+}
+.btn-delete:hover{
+  opacity: 1;
+}
+
+i:hover{
+  color: red;
+}
