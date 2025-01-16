@@ -41,32 +41,60 @@ Recipe.destroy_all
 # Recipe.create(name: "Banana Oat Pancakes (Breakfast/Dessert)", description: "Blend bananas, oats, eggs, and a pinch of baking powder into a smooth batter. Cook on a non-stick skillet until golden. Serve with honey or fresh fruit for a healthy, quick treat.", image_link: "https://images.pexels.com/photos/14263510/pexels-photo-14263510.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", rating: 9.0)
 
 
-p "Creating categories"
-category = Category.new(name: "Beef")
-file = URI.parse("https://images.pexels.com/photos/7449119/pexels-photo-7449119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1").open
-category.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
-category.save!
+def recipe_builder(id)
+  url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=#{id}"
+  meals_serialized = URI.parse(url).read
+  meal = JSON.parse(meals_serialized)["meals"][0]
 
-url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
-recipes_serialized = URI.parse(url).read
-recipes= JSON.parse(recipes_serialized)
-recipes["meals"].each do |recipe|
-  recipe["idMeal"]
-  recipe_url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=#{recipe["idMeal"]}"
-  recipe_serialized = URI.parse(recipe_url).read
-  recipe_data = JSON.parse(recipe_serialized)
-  recipe_new = Recipe.new(
-    name: recipe_data["meals"][0]["strMeal"],
-    description: recipe_data["meals"][0]["strInstructions"],
-    image_link: recipe_data["meals"][0]["strMealThumb"],
-    rating: rand(1..10)
+  p "Creating #{meal["strMeal"]}"
+  Recipe.create!(
+    name: meal["strMeal"],
+    description: meal["strInstructions"],
+    image_link: meal["strMealThumb"],
+    rating: rand(2..5).floor(1)
   )
-  recipe_new.save!
-  bookmark = Bookmark.new
-  bookmark.recipe = recipe_new
-  bookmark.category = category
-  bookmark.save!
+
 end
+
+
+categories = ["Breakfast", "Pasta", "Dessert", "Chicken", "Vegetarian", "Beef"]
+
+categories.each do |category|
+  url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=#{category}"
+  recipes_serialized = URI.parse(url).read
+  recipes = JSON.parse(recipes_serialized)
+  recipes["meals"].take(6).each do |recipe|
+    recipe_builder(recipe["idMeal"])
+  end
+end
+
+
+# p "Creating categories"
+# category = Category.new(name: "Beef")
+# file = URI.parse("https://images.pexels.com/photos/7449119/pexels-photo-7449119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1").open
+# category.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# category.save!
+
+# url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
+# recipes_serialized = URI.parse(url).read
+# recipes= JSON.parse(recipes_serialized)
+# recipes["meals"].each do |recipe|
+#   recipe["idMeal"]
+#   recipe_url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=#{recipe["idMeal"]}"
+#   recipe_serialized = URI.parse(recipe_url).read
+#   recipe_data = JSON.parse(recipe_serialized)
+#   recipe_new = Recipe.new(
+#     name: recipe_data["meals"][0]["strMeal"],
+#     description: recipe_data["meals"][0]["strInstructions"],
+#     image_link: recipe_data["meals"][0]["strMealThumb"],
+#     rating: rand(1..10)
+#   )
+#   recipe_new.save!
+#   bookmark = Bookmark.new
+#   bookmark.recipe = recipe_new
+#   bookmark.category = category
+#   bookmark.save!
+# end
 
 # p "Creating categories"
 # file = URI.parse("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg").open
